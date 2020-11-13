@@ -13,7 +13,7 @@ displayCoins();
 
 const displayMoreData = async (id: string) => {
   let info: object = await coinsManager.getCoinInfo(id);
-  viewManager.renderMoreInfo(id, info.data);
+  viewManager.renderMoreInfo(id, info['data']);
 };
 
 $('.coins-container').on('click', '.btn', function () {
