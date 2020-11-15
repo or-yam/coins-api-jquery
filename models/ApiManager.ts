@@ -12,6 +12,7 @@ type Coin = {
 };
 
 export = class ApiManager {
+  data: { coins: Coin[] };
   constructor() {
     this.data = {
       coins: [],
