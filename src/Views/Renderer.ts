@@ -1,17 +1,4 @@
-type Coin = {
-  id: string;
-  name: string;
-  symbol: string;
-  isSaved: boolean;
-  data: {
-    name: string;
-    marketData: number[];
-    image: string;
-    dateIssued: {};
-  };
-};
-
-export = class Renderer {
+class Renderer {
   renderCoinCard(coinData: Coin) {
     $('.coins-container').append(`
     <div id=${coinData.id}  class="card m-4" style="width: 18rem;">
@@ -48,4 +35,4 @@ export = class Renderer {
     ${info.name}
     </span>`);
   } //make a real template
-};
+}

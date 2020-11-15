@@ -1,17 +1,4 @@
-type Coin = {
-  id: string;
-  name: string;
-  symbol: string;
-  isSaved: boolean;
-  data: {
-    name: string;
-    marketData: number[];
-    image: string;
-    dateIssued: {};
-  };
-};
-
-export = class ApiManager {
+class ApiManager {
   data: { coins: Coin[] };
   constructor() {
     this.data = {
@@ -37,7 +24,9 @@ export = class ApiManager {
       method: 'GET',
       url: `https://api.coingecko.com/api/v3/coins/${id}`,
       dataType: 'json',
-      error: (xhr, text, error) => text,
+      error: (xhr, text, error) => ({
+        error: text,
+      }),
       success: (data) =>
         data.map(
           (coin: {
@@ -45,7 +34,7 @@ export = class ApiManager {
             market_data: {
               current_price: { usd: number; ils: number; eur: number };
             };
-            image: string;
+            image: { small: string };
           }) => ({
             name: coin.name,
             marketData: [
@@ -59,14 +48,13 @@ export = class ApiManager {
         ),
     });
 
-    const coin: Coin = this.data.coins.find((coin: Coin) => coin.id === id);
-    coin.data = coinData;
-
+    let coin: Coin | undefined = this.data.coins.find((coin) => coin.id === id);
+    coin ? (coin.data = coinData) : undefined;
     return coin;
   };
 
   toggleSave(id: Coin['id']) {
-    let coin = this.data.coins.find((coin: Coin) => coin.id === id);
-    coin.isSaved = !coin.isSaved;
+    let coin: Coin | undefined = this.data.coins.find((coin) => coin.id === id);
+    coin ? (coin.isSaved = !coin.isSaved) : undefined;
   }
-};
+}
