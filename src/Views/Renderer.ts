@@ -31,8 +31,9 @@ class Renderer {
   renderMoreInfo(id: Coin['id'], info: Coin['data']) {
     const infoContainer = $(`#${id}`).find('.more-info');
     infoContainer.empty().append(`
-    <span>
-    ${info.name}
-    </span>`);
+    <div>
+    <img src=${info.image} alt="icon">    
+    <span>${info.marketData[0]}$</span>
+    </div>`);
   } //make a real template
 }

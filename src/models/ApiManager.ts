@@ -20,36 +20,26 @@ class ApiManager {
   };
 
   getCoinInfo = async (id: Coin['id']) => {
-    const coinData = await $.ajax({
+    let coinData = await $.ajax({
       method: 'GET',
       url: `https://api.coingecko.com/api/v3/coins/${id}`,
       dataType: 'json',
-      error: (xhr, text, error) => ({
-        error: text,
-      }),
-      success: (data) =>
-        data.map(
-          (coin: {
-            name: string;
-            market_data: {
-              current_price: { usd: number; ils: number; eur: number };
-            };
-            image: { small: string };
-          }) => ({
-            name: coin.name,
-            marketData: [
-              coin.market_data.current_price.usd,
-              coin.market_data.current_price.ils,
-              coin.market_data.current_price.eur,
-            ],
-            image: coin.image.small,
-            dateIssued: new Date(),
-          })
-        ),
+      error: (xhr, text, error) => ({ error: text }),
+      success: (data) => data,
     });
 
     let coin: Coin | undefined = this.data.coins.find((coin) => coin.id === id);
-    coin ? (coin.data = coinData) : undefined;
+    coin
+      ? (coin.data = {
+          marketData: [
+            coinData.market_data.current_price.usd,
+            coinData.market_data.current_price.ils,
+            coinData.market_data.current_price.eur,
+          ],
+          image: coinData.image.small,
+          dateIssued: new Date(),
+        })
+      : undefined;
     return coin;
   };
 

@@ -4,15 +4,11 @@ type Coin = {
   symbol: string;
   isSaved: boolean;
   data: {
-    name: string;
     marketData: number[];
     image: string;
     dateIssued: {};
   };
 };
-
-// import Renderer from './Views/Renderer';
-// import ApiManager from './models/ApiManager';
 
 const coinsManager = new ApiManager();
 const viewManager = new Renderer();
@@ -25,8 +21,8 @@ const displayCoins = async () => {
 displayCoins();
 
 const displayMoreData = async (id: string) => {
-  let info: Coin | undefined = await coinsManager.getCoinInfo(id);
-  info ? viewManager.renderMoreInfo(id, info.data) : undefined;
+  let coin: Coin | undefined = await coinsManager.getCoinInfo(id);
+  coin ? viewManager.renderMoreInfo(id, coin.data) : undefined;
 };
 
 $('.coins-container').on('click', '.btn', function () {
