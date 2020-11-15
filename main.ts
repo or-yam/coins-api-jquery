@@ -1,3 +1,16 @@
+type Coin = {
+  id: string;
+  name: string;
+  symbol: string;
+  isSaved: boolean;
+  data: {
+    name: string;
+    marketData: number[];
+    image: string;
+    dateIssued: {};
+  };
+};
+
 import Renderer from './Views/Renderer';
 import ApiManager from './models/ApiManager';
 
@@ -6,7 +19,7 @@ const viewManager = new Renderer();
 
 const displayCoins = async () => {
   viewManager.renderCoinsLoading();
-  let list: object[] = await coinsManager.getCoinsList();
+  let list: Coin[] = await coinsManager.getCoinsList();
   viewManager.renderCoinsList(list);
 };
 displayCoins();

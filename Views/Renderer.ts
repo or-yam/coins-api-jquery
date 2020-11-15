@@ -1,5 +1,18 @@
-export default class Renderer {
-  renderCoinCard(coinData: object) {
+type Coin = {
+  id: string;
+  name: string;
+  symbol: string;
+  isSaved: boolean;
+  data: {
+    name: string;
+    marketData: number[];
+    image: string;
+    dateIssued: {};
+  };
+};
+
+export = class Renderer {
+  renderCoinCard(coinData: Coin) {
     $('.coins-container').append(`
     <div id=${coinData.id}  class="card m-4" style="width: 18rem;">
         <div class="card-body">
@@ -16,7 +29,7 @@ export default class Renderer {
     `);
   }
 
-  renderCoinsList(list: object[]) {
+  renderCoinsList(list: Coin[]) {
     $('.coins-container').empty();
     for (const coinData of list) {
       this.renderCoinCard(coinData);
@@ -28,12 +41,11 @@ export default class Renderer {
     $('.coins-container').append(`<div>Loading Coins Data...</div>`);
   }
 
-  renderMoreInfo(id: string, info: object) {
+  renderMoreInfo(id: Coin['id'], info: Coin['data']) {
     const infoContainer = $(`#${id}`).find('.more-info');
-
     infoContainer.empty().append(`
     <span>
     ${info.name}
     </span>`);
-  }
-}
+  } //make a real template
+};
