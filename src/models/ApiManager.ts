@@ -13,7 +13,7 @@ class ApiManager {
       dataType: 'json',
       error: (error) => error,
       success: (data: Coin[]) =>
-        data.splice(100, data.length).map((coin) => (coin.isSaved = false)),
+        data.splice(0, 300).map((coin) => (coin.isSaved = false)),
     });
     this.data.coins = result;
     return this.data.coins;
