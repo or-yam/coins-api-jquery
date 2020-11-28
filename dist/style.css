@@ -1,0 +1,101 @@
+.coins-container {
+  height: 100%;
+  background-image: url('https://i.pinimg.com/originals/78/99/86/7899868e862cdfced007e7669518b11d.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main-card {
+  background-image: url('../assets/images/Trianglify-card-background.png');
+}
+/* More info  styling */
+.more-info {
+  height: 150px;
+}
+.coin-img {
+  margin: 5px;
+  width: 50px;
+  height: 50px;
+}
+#coin-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  height: 150px;
+  display: inline;
+}
+#coin-table th {
+  background-color: #25ccf7;
+  text-align: center;
+}
+#coin-table td {
+  background-color: #d2dae2;
+  text-indent: 3px;
+  letter-spacing: 0.5x;
+}
+
+#coin-table th,
+#coin-table td {
+  border: 0.5px solid black;
+}
+
+/* Too many coins selected model styling */
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Modal Content */
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  display: block;
+
+  /* display: grid;
+      grid-template-columns: auto; */
+}
+
+/* modal-Button */
+.close {
+  color: black;
+  /* float: right; */
+  font-size: 28px;
+  font-weight: bold;
+}
+.save {
+  color: black;
+  /* float: right; */
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  /* color: #000; */
+  text-decoration: none;
+  cursor: pointer;
+}
+.save:hover,
+.save:focus {
+  /* color: #000; */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.more-info {
+  display: none;
+}

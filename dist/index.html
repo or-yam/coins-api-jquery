@@ -9,9 +9,11 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+    <script src="/coins-api-jquery-typescript v0.1/jquery-3.5.1.js"></script>
     <link rel="stylesheet" href="style.css" />
     <title>TradeApp</title>
   </head>
+
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -40,16 +42,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#"
+              <a class="nav-link" id="coins-tab" href="#"
                 >Coins <span class="sr-only">(current)</span></a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Real-Time Reports</a>
+              <a class="nav-link" id="realTime-tab" href="#"
+                >Real-Time Reports</a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"
+              <a
+                class="nav-link"
+                id="about-tab"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
                 >About</a
               >
             </li>
@@ -57,12 +66,13 @@
           <form class="form-inline my-2 my-lb-0">
             <input
               class="form-control mr-sm-2"
+              id="search"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
             <button
-              class="btn btn-outline-primary lb my-2 my-sm-0"
+              class="search-btn btn btn-outline-primary lb my-2 my-sm-0"
               type="submit"
             >
               Search
@@ -73,6 +83,8 @@
     </header>
 
     <div class="coins-container d-flex justify-content-center flex-wrap"></div>
+    <div id="reports-container" style="height: 300px; width: 100%"></div>
+    <div class="about-container"></div>
 
     <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script
@@ -80,9 +92,9 @@
       integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
       crossorigin="anonymous"
     ></script>
+    <script src="../node_modules/canvasjs/dist/jquery.canvasjs.min.js"></script>
     <script src="models/ApiManager.js"></script>
     <script src="Views/Renderer.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
-
